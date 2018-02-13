@@ -2,11 +2,12 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  entry: './views/main.js',
+  entry: './frontend/main.js',
   output: {
     path: path.resolve(__dirname, './public'),
-    publicPath: '/public/',
-    filename: 'build.js'
+  //  publicPath: '/public/',
+    filename: 'build.js',
+      library: "scripts"
   },
   resolve: {
     extensions: ['.js', '.vue'],
@@ -17,6 +18,16 @@ module.exports = {
   },
   module: {
     rules: [
+        {
+            test: /\.css$/,
+            use: [ 'style-loader', 'css-loader' ]
+        },
+        {
+          test: /\.handlebars$/,
+            loader: "handlebars-loader",
+            exclude: /(node_modules|bower_components)/
+        },
+
       {
         test: /\.vue$/,
         loader: 'vue-loader',

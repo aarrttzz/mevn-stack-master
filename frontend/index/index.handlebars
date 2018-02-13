@@ -1,0 +1,61 @@
+<header id="top">
+    <div class="container">
+        <h1> My name is <strong>Artem Pichugin </strong>.
+            I am a C#/.NET Software designer and developer.</h1>
+    </div><!-- .container -->
+</header><!-- header -->
+
+<div id="main" role="main" class="container">
+    <h2>This site contains examples of my work. <br>
+        My skype: <strong>aarrttzz</strong>
+    </h2>
+
+    <section id="work">
+        <div class="swipe-hint mob"></div>
+
+
+
+     {{#each articles}}
+         <div class="hr date"><span>{{this.date}}</span></div>
+        <article class="cf">
+            <div class="description">
+                <h3><a class="expand tr-roll" href="http://artempichugin.ru/#"></a>{{this.title}}</h3>
+                <h4>{{this.subtitle}}</h4>
+
+                <div class="details">
+                    <p>{{this.description}} </p>
+                    <ul class="responsibilities">
+                        {{#each this.tags}}
+                            <li>{{this}}</li>
+                        {{/each}}
+                    </ul>
+                    <ul class="links">
+
+                        {{#each this.links}}
+                            <li><a href="{{this.url}}" target="_blank">{{this.name}} </a></li>
+                        {{/each}}
+
+                    </ul>
+                </div><!-- .details -->
+
+                <ul class="flex-direction-nav">
+                    <li><a class="flex-prev disabled" href="http://artempichugin.ru/#"></a></li>
+                    <li><a class="flex-next" href="http://artempichugin.ru/#"></a></li>
+                </ul>
+                <ul class="flex-direction-nav"><li><a class="flex-prev disabled" href="http://artempichugin.ru/#"></a></li><li><a class="flex-next" href="http://artempichugin.ru/#"></a></li></ul></div><!-- .description -->
+
+            <div class="images">
+                <div class="flex-viewport">
+
+                </div>
+                <div class="flex-viewport"><ul class="slides cf">
+                    {{#each this.images}}
+                        <li><img src="{{this}}"></li>
+                    {{/each}}
+                </ul></div></div><!-- .images -->
+        </article> <hr> <!-- article -->
+        {{/each}}
+
+        <p class="center"><a class="totop tr-hover" href="/#top">Up</a></p>
+    </section><!-- #work -->
+</div><!-- .container -->

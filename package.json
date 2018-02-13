@@ -3,25 +3,29 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "node -r dotenv/config ./bin/www",
-    "dev:serve": "nodemon -r dotenv/config ./bin/www",
-    "dev:client": "webpack-dev-server --port 4001 --open --inline --hot --content-base ./views",
+    "start": "node -r dotenv/config ./backend/www",
+    "dev:serve": "nodemon -r dotenv/config ./backend/www",
+    "dev:client": "webpack-dev-server --port 4001 --open --inline --hot --content-base ./frontend",
     "build": "webpack --progress --hide-modules",
     "static": "npm run build && npm run dev:serve"
   },
   "dependencies": {
     "axios": "^0.17.0",
-    "body-parser": "~1.18.2",
+    "body-parser": "^1.18.2",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
     "debug": "~2.6.9",
     "dotenv": "^4.0.0",
     "express": "~4.15.5",
+    "handlebars": "^4.0.11",
+    "handlebars-loader": "^1.6.0",
     "mongoose": "^4.12.3",
     "morgan": "~1.9.0",
     "serve-favicon": "~2.4.5",
     "vue": "^2.5.2",
+    "vue-picture-input": "^2.1.1",
     "vue-router": "^3.0.1",
+    "vue-upload-image": "^1.0.5",
     "vuetify": "^0.16.9"
   },
   "devDependencies": {

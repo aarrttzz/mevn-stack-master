@@ -13,7 +13,7 @@ app.use(cors())
 
 // const index = require('./src/routes/index');
 const { apiRoutes } = require('./src/routes/index')
-const { webROutes } = require('./src/routes/index')
+const { webRoutes } = require('./src/routes/index')
 
 // Use native ES6 Promises since mongoose's are deprecated.
 mongoose.Promise = global.Promise
@@ -34,10 +34,17 @@ app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:500
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
+/*
+app.use(function(req, res, next) {
+console.log(req)
+    next(req);
+});*/
+
+console.log('dir: ' + path.join(__dirname, '../public'))
+app.use(express.static(path.join(__dirname, '../public')));
+//app.use('/api', webRoutes);
 app.use('/api', apiRoutes);
-
 
 
 // catch 404 and forward to error handler
@@ -52,6 +59,7 @@ app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+  console.log(res.locals.error)
   console.error('Express ERROR: ' + err.message);
 });
 

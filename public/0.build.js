@@ -65,7 +65,7 @@ eval("/* WEBPACK VAR INJECTION */(function(process) {\n\nvar utils = __webpack_r
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("\n/* harmony default export */ __webpack_exports__[\"a\"] = ('http://localhost:4000/api/');\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9mcm9udGVuZC9odHRwQ29uZmlnLmpzPzY5ZjQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBLHlEQUFlLDRCQUFmIiwiZmlsZSI6IjEzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbmV4cG9ydCBkZWZhdWx0ICdodHRwOi8vbG9jYWxob3N0OjQwMDAvYXBpLyc7XG5cblxuLy8gV0VCUEFDSyBGT09URVIgLy9cbi8vIC4vZnJvbnRlbmQvaHR0cENvbmZpZy5qcyJdLCJzb3VyY2VSb290IjoiIn0=\n//# sourceURL=webpack-internal:///13\n");
+eval("\n/* harmony default export */ __webpack_exports__[\"a\"] = ('https://artempichugin.herokuapp.com/api/');\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9mcm9udGVuZC9odHRwQ29uZmlnLmpzPzY5ZjQiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IjtBQUNBLHlEQUFlLDBDQUFmIiwiZmlsZSI6IjEzLmpzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcbmV4cG9ydCBkZWZhdWx0ICdodHRwczovL2FydGVtcGljaHVnaW4uaGVyb2t1YXBwLmNvbS9hcGkvJztcblxuXG4vLyBXRUJQQUNLIEZPT1RFUiAvL1xuLy8gLi9mcm9udGVuZC9odHRwQ29uZmlnLmpzIl0sInNvdXJjZVJvb3QiOiIifQ==\n//# sourceURL=webpack-internal:///13\n");
 
 /***/ }),
 /* 14 */

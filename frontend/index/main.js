@@ -4,6 +4,8 @@ import css from './screen.css';
 import url from '../httpConfig'
 
 var Application = require('./scripts');
+
+var Application = require('./scripts');
 var tpl = require('./index.handlebars');
 
 $.get(url+'/articles', function(response){

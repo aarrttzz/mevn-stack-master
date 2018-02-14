@@ -61,7 +61,7 @@
 
 <script>
 export default {
-  data: () => {
+  data: function() {
     return {
       clipped: true,
       drawer: true,

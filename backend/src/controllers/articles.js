@@ -25,7 +25,7 @@ function createArticle(body){
 exports.index = async (req, res) => {
   
   //query the DB of all users
-  const articles = await Article.find().exec()
+  const articles = await Article.find().sort('-date').exec()
 
   //send the response
   res.json({ data: articles })
@@ -95,11 +95,6 @@ exports.update = async (req, res) => {
     var dbArticle =  await Article.findById(req.params.id).exec();
     var newArticle = new Article(req.body);
     var imagesGuids = [];
-
-    console.log('dbArticle')
-    console.log(dbArticle)
-    console.log('newArticle')
-    console.log(newArticle)
 
     var needRemove = false;
     newArticle.images.forEach(articleImage => {

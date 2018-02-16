@@ -19,8 +19,7 @@
           <v-text-field label="Description" v-model="changedArticle.description"> </v-text-field>
           <v-text-field label="Tags" v-model="changedArticle.tags"> </v-text-field>
           <linksEditor @links-changed="updateLinks" :links="changedArticle.links"></linksEditor>
-          <v-date-picker v-model="mydate" landscape> </v-date-picker>
-          <input type="date" v-model="mydate">
+          <v-date-picker @input="dateChanged" v-model="mydate" landscape> </v-date-picker>
 
           <v-btn @click="$emit('edited', changedArticle)" class="green lighten-1 white--text">Submit</v-btn>
           <v-btn @click="$emit('closeEdit')" class="red white--text">Close</v-btn>
@@ -56,29 +55,23 @@ export default {
   created() {
       console.log('edit dialog created')
   },
-destroyed(){
-    console.log('edit dialog destroyed')
-},
-
-
+    destroyed(){
+        console.log('edit dialog destroyed')
+    },
     mounted() {
         console.log('edit dialog maunted')
         this.changedArticle = this.article;
-      //  this.changedArticle.images =  this.article.images;
         this.mydate = this.changedArticle.date;
     },
-
     updated() {
         var me = this;
-        //this.changedArticle.images =  [];
-        //this.changedArticle.images =  this.article.images;
         console.log('edit dialog updated')
-        //console.log( this.changedArticle.images);
-       // me.changedArticle.date = me.mydate;
-       // this.mydate = this.article.date;
-
     },
     methods: {
+        dateChanged(date){
+            var me = this;
+            me.changedArticle.date = date;
+        },
         uploadImageAttemt(images){
             var me = this;
             me.changedArticle.images = images;
@@ -87,9 +80,7 @@ destroyed(){
             var me = this;
             me.changedArticle.links = links;
         },
-
     }
-
 }
 </script>
 

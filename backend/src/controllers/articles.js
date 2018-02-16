@@ -101,17 +101,26 @@ exports.update = async (req, res) => {
     console.log('newArticle')
     console.log(newArticle)
 
-    dbArticle.images.forEach(articleImage => {
-        Image.findByIdAndRemove(articleImage).exec();
-    });
+    var needRemove = false;
     newArticle.images.forEach(articleImage => {
-        var img = new Image({
-            guid: uuidv4(),
-            base64: articleImage
-        });
-        imagesGuids.push(img._id);
-        img.save();
+        if (articleImage.indexOf('base64')!=-1){
+            needRemove = true;
+            var img = new Image({
+                guid: uuidv4(),
+                base64: articleImage
+            });
+            imagesGuids.push(img._id);
+            img.save();
+        }else{
+            imagesGuids.push(articleImage);
+        }
     });
+
+    if (needRemove)
+        dbArticle.images.forEach(articleImage => {
+                Image.findByIdAndRemove(articleImage).exec();
+        });
+
     newArticle.images = imagesGuids;
 
 

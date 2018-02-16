@@ -1,5 +1,25 @@
 //import the User constant explicitly
 const { Article } = require('../database/models/index')
+const { Image } = require('../database/models/index')
+const uuidv4 = require('uuid/v4');
+
+function createArticle(body){
+    //create a new user object with the request body
+    var article = new Article(body)
+    var imagesGuids = [];
+    article.images.forEach(articleImage => {
+        var img = new Image({
+            guid: uuidv4(),
+            base64: articleImage
+        });
+        imagesGuids.push(img._id);
+        img.save();
+    });
+    article.images = imagesGuids;
+
+    //save it in the DB
+    article.save()
+}
 
 //show all users
 exports.index = async (req, res) => {
@@ -15,23 +35,40 @@ exports.index = async (req, res) => {
 
 //Store new article
 exports.store = async (req, res) => {
-  
-  //create a new user object with the request body
-  const article = new Article(req.body)
 
-  //save it in the DB
-  await article.save()
+    var article = new Article(req.body)
+    var imagesGuids = [];
+
+    if (article.images)
+    article.images.forEach(articleImage => {
+        var img = new Image({
+            guid: uuidv4(),
+            base64: articleImage
+        });
+        imagesGuids.push(img._id);
+        img.save();
+    });
+    article.images = imagesGuids;
+
+    //save it in the DB
+    article.save()
 
   //send a 201 and the new resource
   res.status(201).json({ data: article })
 }
 
-//this function is for looking at one user by their mongo id
+//this function is for looking at one article by their mongo id
 exports.show = async (req, res) => {
-
+  var imgBuf = [];
   //find this sneaky boye
-  const article = await Article.findById(req.params.id).exec()
-
+  var article = await Article.findById(req.params.id).exec();
+    if (article.images)
+    article.images.forEach(articleImage => {
+        var img  = Image.findById(articleImage).exec();
+        if(img)
+          imgBuf.push(img.base64)
+    });
+    article.images = imgBuf;
   //send him back home
   res.json({ data: article })
 }
@@ -39,17 +76,47 @@ exports.show = async (req, res) => {
 //ever wanted to make the users disappear 
 exports.delete = async (req, res) => {
 
-  //find the sneaky boye and make him go away
-  await Article.findByIdAndRemove(req.params.id).exec()
+    const article =  await Article.findById(req.params.id).exec()
 
-  //let em know there aint no content no mo
+    if (article.images)
+    article.images.forEach(articleImage => {
+        Image.findByIdAndRemove(articleImage).exec();
+    });
+    //find the sneaky boye and make him go away
+    Article.findByIdAndRemove(req.params.id).exec();
+
+
   res.status(204).json()
 }
 
 //edit a user based on ID
 exports.update = async (req, res) => {
+
+    var dbArticle =  await Article.findById(req.params.id).exec();
+    var newArticle = new Article(req.body);
+    var imagesGuids = [];
+
+    console.log('dbArticle')
+    console.log(dbArticle)
+    console.log('newArticle')
+    console.log(newArticle)
+
+    dbArticle.images.forEach(articleImage => {
+        Image.findByIdAndRemove(articleImage).exec();
+    });
+    newArticle.images.forEach(articleImage => {
+        var img = new Image({
+            guid: uuidv4(),
+            base64: articleImage
+        });
+        imagesGuids.push(img._id);
+        img.save();
+    });
+    newArticle.images = imagesGuids;
+
+
   const article = await Article
-  .findByIdAndUpdate(req.params.id, req.body, { new: true })
+  .findByIdAndUpdate(req.params.id, newArticle, { new: true })
   .exec()
 res.json({ data: article })
 }

@@ -4,19 +4,20 @@
     <input @change="handleFileSelect" type="file" name="files[]" multiple />
     <br> <br>
     <span v-for="img in images">
-         <img width="100" class="thumb" v-bind:src="img" style="margin-left: 5px"/>
+         <img width="100" class="thumb" v-bind:src="url+img" style="margin-left: 5px"/>
     </span>
 </div>
 </template>
 
 
 <script>
-
+import url from '../../httpConfig'
 
 export default {
 
   data: () => ({
-    editImages:[]
+    editImages:[],
+      url :  url + '/images/'
   }),
     props: ['images'],
     methods: {
@@ -29,6 +30,7 @@ export default {
 
         handleFileSelect(evt) {
             var me = this;
+            me.url = '';
 
             var files = evt.target.files; // FileList object
 

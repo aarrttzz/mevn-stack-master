@@ -13,6 +13,10 @@ $.get(url+'/articles', function(response){
         var item = response.data[i];
         item.tags = item.tags.split(',');
         item.date = new Date(item.date).getFullYear();
+
+        for(var t=0; t<item.images.length; t++){
+            item.images[t] = url +'/images/'+ item.images[t];
+        }
     }
 
     document.getElementById('app').innerHTML = tpl({articles: response.data});

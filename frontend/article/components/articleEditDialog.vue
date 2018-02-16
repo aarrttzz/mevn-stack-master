@@ -22,7 +22,7 @@
           <v-date-picker v-model="mydate" landscape> </v-date-picker>
           <input type="date" v-model="mydate">
 
-          <v-btn @click="edited" class="green lighten-1 white--text">Submit</v-btn>
+          <v-btn @click="$emit('edited', changedArticle)" class="green lighten-1 white--text">Submit</v-btn>
           <v-btn @click="$emit('closeEdit')" class="red white--text">Close</v-btn>
         </v-form>
       </v-card-text>
@@ -87,10 +87,7 @@ destroyed(){
             var me = this;
             me.changedArticle.links = links;
         },
-        edited(){
 
-            $emit('edited', changedArticle)
-        }
     }
 
 }

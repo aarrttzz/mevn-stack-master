@@ -4,7 +4,8 @@
       <template>
         <v-layout row>
           <v-flex>
-            <v-card>              
+            <v-card>
+
               <!-- Begin Toolbar -->
               <v-toolbar>
                 <v-toolbar-title> Articles </v-toolbar-title>

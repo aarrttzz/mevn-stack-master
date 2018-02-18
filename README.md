@@ -1,9 +1,10 @@
-# MEVN Stack
+# Artem Pichugn Prtfolio
+
+Artem Pichugn portfolio web site.
+[**D**emo](https://artempichugin.herokuapp.com)
 
 This project is intended to be used as a quickstarter for building a
 [**M**ongo](https://www.mongodb.com/) [**E**xpress](https://expressjs.com/) [**V**ueJS](https://vuejs.org/) [**N**ode](https://nodejs.org/en/) stack. This is similar to a MEAN stack, except Angular has been swapped out for a VueJS single page application rendered on the client side.
-
-This is also the code used in the second VueJS training at the UW-Parkside App Factory.
 
 ## Technologies
 This project uses:
@@ -20,7 +21,7 @@ This project uses:
 
 To install this project simply clone or download the repo:
 
-`git clone https://github.com/aturingmachine/mevn-stack.git <dir name>`
+`git clone https://github.com/aarrttzz/mevn-stack-master.git <dir name>`
 
 `cd <dir name>`
 
@@ -56,42 +57,6 @@ A more detailed breakdown of the scripts are as follows:
 | `build` | None | Bundled by Webpack
 | `static` | Hot reload | Bundled by Webpack
 
-### Project Structure
-
-##### Backend
-
-`/src`
-
-`--/controllers/`-- Contains controllers for our API resources.
-
-`--/database/`
-
-`----/models/`-- Contains the models for our API Resources using [Mongoose](http://mongoosejs.com/).
-
-`--/middleware/`-- Any middleware you may need can go here.
-
-`--/routes/`-- All route definitions are here.
-
-`----/api.js`-- Routes for the API.
-
-`----/user.js`-- Routes specific to the user resource.
-
-##### Frontend
-
-`/views`
-
-`--/config/http.js`-- Axios config for local request 
-
-`--/pages/`-- Separate Component Pages go here.
-
-`--/router/index.js`-- Config for [vue-router](https://github.com/vuejs/vue-router)
-
-`--/App.vue`-- Component that has Nav-Drawer, Footer, and Toolbar wrapped around a router view of other components.
-
-`--/main.js`-- Registers the Vue components and Router
-
-`--/index.html`-- The file we return, has the Vue app in it.
-
 ### Requirements
 
 This project will require:
@@ -108,36 +73,3 @@ This project will require:
 	* [vuetify](https://vuetifyjs.com/vuetify/quick-start) Material design for Vue
 	* [vue-router](https://github.com/vuejs/vue-router) Router for the SPA 
 
-### User Resource
-The example resource is as follows
-
-| Attribute     | Type         | Required|
-| :-------------: |:-------------:| :-----:  |
-| `name`      	| String 		| `true`  |
-| `age`      	| Number        | `true`  |
-| `email` 		| String        | `true`  |
-
-
-### Existsing Routes
-
-All user endpoints are behind the `/api` endpoint.
-
-#### `GET`
-`/users` - returns a list of all users inside of an array called `data`.
-
-`/users/:id` - where `:id` is the id of a `user` resource. The resource is then returned in JSON format.
-
-#### `POST`
-`/users` - Creates a new `user` resource based on the payload of the request.
-
-#### `DELETE`
-`/users/:id` - Delete a user resouce matching the `:id` specified.
-
-#### `PUT`
-`/users` - Update a user based on the payload of the request
-
-##
-
-The Client can be accessed by hitting the document root:
-
-`localhost:8080/` Will send you to the application.

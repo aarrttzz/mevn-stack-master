@@ -44,10 +44,6 @@
                     </articleDeleteDialog>
               </span>
 
-
-
-
-
               <span  v-if="articles.length">
                 <articleItem v-for="article in articles" :key="article._id"
                              :article="article" @setUpEdit="setupEdit(article)"

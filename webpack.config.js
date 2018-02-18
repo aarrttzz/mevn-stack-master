@@ -1,15 +1,11 @@
 var path = require('path')
 var webpack = require('webpack')
-
-//const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
 module.exports = {
   entry: './frontend/main.js',
   output: {
     path: path.resolve(__dirname, './public'),
-  //  publicPath: '/public/',
     filename: 'build.js',
       library: "scripts"
   },
@@ -47,9 +43,7 @@ module.exports = {
         loader: 'babel-loader',
         exclude: /node_modules/,
           options: {
-             // presets: ["babel-preset-env"]
           }
-
       },
       {
         test: /\.(png|jpg|gif|svg)$/,

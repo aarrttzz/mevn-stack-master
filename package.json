@@ -6,8 +6,8 @@
     "start": "node -r dotenv/config ./backend/www",
     "dev:serve": "nodemon -r dotenv/config ./backend/www",
     "dev:client": "webpack-dev-server --port 4001 --open --inline --hot --content-base ./frontend",
-    "build": "webpack --progress --hide-modules",
-    "static": "npm run build && npm run dev:serve"
+    "buildm": "webpack --progress --hide-modules",
+    "static": "npm run buildm && npm run dev:serve"
   },
   "dependencies": {
     "axios": "^0.17.0",
